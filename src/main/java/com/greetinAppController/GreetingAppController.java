@@ -31,4 +31,9 @@ public class GreetingAppController {
 	    public ResponseEntity<String> getMessage() {
 	        return new ResponseEntity<String>(greetingService.getMessage(), HttpStatus.OK);
 	    }
+	    @GetMapping(value = {"getName"})
+	    public ResponseEntity<String> getGreetingMessage(@RequestParam (value = "firstName", defaultValue = "World") String firstName,
+	                                                     @RequestParam (value = "lastName", defaultValue = "") String lastName) {
+	        return new ResponseEntity<>(greetingService.getGreetingMessage(firstName, lastName), HttpStatus.OK);
+	    }
 }
